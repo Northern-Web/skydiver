@@ -1,0 +1,21 @@
+{
+  "development": {
+    "config_id": "development",
+    "app_name": "Skydiver",
+    "app_desc": "Digital Logbook for skydivers",
+    "node_port": 3000,
+    "json_indentation": 4,
+    "database": "database_name",
+    "database_host": "database_host",
+    "database_user": "database_user",
+    "database_password": "database_password"
+  },
+  "production": {
+    "config_id": "production",
+    "node_port": 3000,
+    "database": "database_name",
+    "database_host": "database_host",
+    "database_user": "database_user",
+    "database_password": "database_password"
+    }
+}
