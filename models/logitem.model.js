@@ -26,8 +26,8 @@ LogItem.create = (newLogItem, result) => {
       return;
     }
 
-    console.log("created customer: ", { id: res.insertId, ...newCustomer });
-    result(null, { id: res.insertId, ...newCustomer });
+    console.log("created logbook: ", { id: res.insertId, ...newLogItem });
+    result(null, { id: res.insertId, ...newLogItem });
   });
 }
 
