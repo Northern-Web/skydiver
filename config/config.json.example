@@ -8,7 +8,8 @@
     "database": "database_name",
     "database_host": "database_host",
     "database_user": "database_user",
-    "database_password": "database_password"
+    "database_password": "database_password",
+    "web_token_secret": "Your web token secret"
   },
   "production": {
     "config_id": "production",
@@ -16,6 +17,7 @@
     "database": "database_name",
     "database_host": "database_host",
     "database_user": "database_user",
-    "database_password": "database_password"
+    "database_password": "database_password",
+    "web_token_secret": "Your web token secret"
     }
 }
