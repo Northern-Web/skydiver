@@ -31,3 +31,20 @@ exports.create = (req, res) => {
     else res.send(data);
   });
 };
+
+// Find a single Log Item with a logItemId
+exports.findOne = (req, res) => {
+  User.findById(req.params.userid, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User with id ${req.params.logitemId}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving User with id " + req.params.logitemId
+        });
+      }
+    } else res.send(data);
+  });
+};

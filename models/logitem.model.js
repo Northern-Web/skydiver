@@ -64,4 +64,32 @@ LogItem.getAll = result => {
   });
 };
 
+LogItem.updateById = (id, logitem, result) => {
+  sql.query(
+    "UPDATE logbook SET jumpdate = ?, aircraft = ?, active = ? WHERE id = ?",
+    [customer.email, customer.name, customer.active, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Customer with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated customer: ", { id: id, ...customer });
+      result(null, { id: id, ...customer });
+    }
+  );
+};
+
+LogItem.countCurrentJumps = async (userId, result) => {
+  const count = await sql.query(`SELECT COUNT(*) AS jumpCount FROM logbook WHERE owner = ?`, userId);
+  return count.jumpCount;
+}
+
 module.exports = LogItem;
