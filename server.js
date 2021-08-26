@@ -2,9 +2,10 @@ const express = require("express");
 const app     = express();
 const mysql   = require("mysql");
 const config   = require('./config/config.js');
+const bodyParser = require("body-parser");
 
 
-
+app.use(bodyParser.json());
 
 
 
@@ -17,6 +18,7 @@ app.get("/", (req, res, next) => {
 });
 
 require("./routes/logitem.routes.js")(app);
+require("./routes/user.routes.js")(app);
 
 
 app.listen(process.env.PORT || 3000, () => {
