@@ -15,7 +15,7 @@ const LogItem = function (logitem) {
   this.remark       = logitem.remark;
   this.license      = logitem.license;
   this.approved     = logitem.approved;
-
+  this.owner        = logitem.owner;
 };
 
 LogItem.create = (newLogItem, result) => {
