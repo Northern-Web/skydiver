@@ -6,19 +6,13 @@ const bodyParser = require("body-parser");
 
 
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
-
-
-app.get("/", (req, res, next) => {
-/*  connection.query("SELECT * FROM logbook", (err, rows) => {
-    if (err) throw err;
-    console.log("Data from the logbook table are:\n", rows);
-    connection.end();
-  })*/
-});
-
+require("./routes/home.routes.js")(app);
 require("./routes/logitem.routes.js")(app);
 require("./routes/user.routes.js")(app);
+
+app.set('view engine', 'ejs');
 
 
 app.listen(process.env.PORT || 3000, () => {
