@@ -1,12 +1,16 @@
-const express = require("express");
-const app     = express();
-const mysql   = require("mysql");
-const config   = require('./config/config.js');
-const bodyParser = require("body-parser");
+const express      = require("express");
+const app          = express();
+const mysql        = require("mysql");
+const config       = require('./config/config.js');
+const bodyParser   = require("body-parser");
+const cookieParser = require("cookie-parser");
+
 
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(cookieParser());
+
 
 require("./routes/home.routes.js")(app);
 require("./routes/logitem.routes.js")(app);
