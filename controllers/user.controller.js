@@ -64,19 +64,21 @@ exports.login = (req, res) => {
 
           if (bResult) {
             const token = jwt.sign({
-              username: data.username,
-              userId: data.userid
+              name:   data.name,
+              userid: data.userid
             },
             global.gConfig.web_token_secret, {
-              expiresIn: '1d'
+              expiresIn: "1h"
             });
 
             data.lastlogin = new Date();
 
             User.updateById(data.userid, data, (err, updatedUser) => {
-              return res.status(200).send({
-                msg: "Authorization Successful",
-                token
+              return res.cookie("access_token", token, {
+                  httpOnly: true,
+                  secure: process.env.NODE_ENV === "production"
+              }).status(200).send({
+                msg: "Authorization Successful"
               });
             });
           } else {
@@ -94,6 +96,13 @@ exports.login = (req, res) => {
 
       }
 });
+}
+
+exports.logout = (req, res) => {
+  return res
+      .clearCookie("access_token")
+      .status(200)
+      .json({ message: "Successfully logged out." });
 }
 
 

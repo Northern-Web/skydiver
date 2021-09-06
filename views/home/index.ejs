@@ -11,17 +11,19 @@
         <h5 class="card-title">Login</h5>
 
 
-        <div class="input-group mb-3">
-          <span class="input-group-text border-0" id="basic-addon1">@</span>
-          <input type="text" id="form1" class="form-control-rounded" placeholder="E-mail" aria-label="E-mail"
-    aria-describedby="basic-addon1" />
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
         </div>
 
-        <div class="input-group mb-3">
-          <span class="input-group-text border-0" id="search-addon"><i class="fas fa-key"></i></span>
-          <input type="password" id="form1" class="form-control-rounded" placeholder="Password" />
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
-        <button type="button" class="btn btn-primary">Button</button>
+
+        <button type="button" class="btn btn-primary" id="btn-login">Login</button>
+
+
       </div>
     </div>
   </div>
@@ -29,5 +31,7 @@
 
   </div>
 </div>
+<script src="/assets/js/auth/signin.js">
 
+</script>
 <%- include ("./../partials/footer") %>

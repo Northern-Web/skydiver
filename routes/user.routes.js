@@ -1,3 +1,5 @@
+const authorize = require("../_middleware/authorize.js");
+
 module.exports = app => {
   const userController = require("../controllers/user.controller.js");
 
@@ -7,8 +9,11 @@ module.exports = app => {
   // Retrieve all User
   //app.get("/api/users", userController.findAll);
 
+  app.get("/api/users/logout", userController.logout);
+
+
   // Retrieve a single User with userid
-  app.get("/api/users/:userid", userController.findOne);
+  app.get("/api/users/:userid", authorize, userController.findOne);
 
   // Update a User with userid
   //app.put("/api/users/:userid", userController.update);
