@@ -4,6 +4,7 @@ const sql = require("./db.js");
 const LogItem = function (logitem) {
   this.jumpid       = logitem.jumpid;
   this.jumpdate     = logitem.jumpdate;
+  this.jumpnum      = logitem.jumpnum;
   this.aircraft     = logitem.aircraft;
   this.dropzone     = logitem.dropzone;
   this.canopy       = logitem.canopy;
@@ -51,8 +52,8 @@ LogItem.findById = (logItemId, result) => {
   });
 };
 
-LogItem.getAll = result => {
-  sql.query("SELECT * FROM logbook", (err, res) => {
+LogItem.getAll = (owner, result) => {
+  sql.query("SELECT * FROM logbook WHERE owner = ?", owner, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
