@@ -13,6 +13,7 @@ async function Signin () {
   .then(response => response.json())
   .then(data => {
     console.log(data);
+    window.location.replace(data.redirect);
   });
 }
 

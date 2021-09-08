@@ -65,6 +65,7 @@ exports.login = (req, res) => {
           if (bResult) {
             const token = jwt.sign({
               name:   data.name,
+              email:  data.email,
               userid: data.userid
             },
             global.gConfig.web_token_secret, {
@@ -78,7 +79,8 @@ exports.login = (req, res) => {
                   httpOnly: true,
                   secure: process.env.NODE_ENV === "production"
               }).status(200).send({
-                msg: "Authorization Successful"
+                msg: "Authorization Successful",
+                redirect: "/dashboard"
               });
             });
           } else {
