@@ -1,0 +1,110 @@
+<%- include ("./../partials/head") %>
+
+<div class="row">
+  <div class="col">
+    <h1>Skydiving Logbook</h1>
+    <h2>For <%= username %></h2>
+  </div>
+  <div class="col">
+
+  </div>
+</div>
+
+<ul class="nav nav-pills nav-pills-icons" role="tablist">
+    <!--
+        color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+    -->
+    <li class="nav-item">
+        <a class="nav-link active" href="#dashboard-1" role="tab" data-toggle="tab">
+            <i class="material-icons">dashboard</i>
+            Dashboard
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#add-jump-1" role="tab" data-toggle="tab">
+            <i class="material-icons">playlist_add</i>
+            Add jump record
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#logbook-1" role="tab" data-toggle="tab">
+            <i class="material-icons">menu_book</i>
+            Logbook
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#signout-1" role="tab" id="btn-signout" data-toggle="tab">
+            <i class="material-icons">logout</i>
+            Sign out
+        </a>
+    </li>
+
+
+
+</ul>
+
+<div class="tab-content tab-space">
+    <div class="tab-pane active" id="dashboard-1">
+      Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.
+      <br><br>
+      Dramatically visualize customer directed convergence without revolutionary ROI.
+    </div>
+
+    <div class="tab-pane" id="add-jump-1">
+
+      <%- include ("./partials/jump.registration.form.ejs") %>
+
+      </div>
+    </div>
+
+    <div class="tab-pane" id="logbook-1">
+      <%- include ("./partials/log.table.ejs") %>
+    </div>
+
+
+</div>
+
+logout
+
+<div class="row">
+  <div class="col">
+
+  </div>
+  <div class="col">
+
+  </div>
+  <div class="col">
+
+  </div>
+</div>
+
+<script src="/assets/js/logbook.js"></script>
+
+<script>
+  <!-- javascript for init -->
+$('.datetimepicker').datetimepicker({
+  icons: {
+    time: "fa fa-clock-o",
+    date: "fa fa-calendar",
+    up: "fa fa-chevron-up",
+    down: "fa fa-chevron-down",
+    previous: 'fa fa-chevron-left',
+    next: 'fa fa-chevron-right',
+    today: 'fa fa-screenshot',
+    clear: 'fa fa-trash',
+    close: 'fa fa-remove'
+  }
+});
+
+$("#btn-signout").click(function () {
+  fetch("/api/users/logout")
+  .then(response => response.json())
+  .then(data => {
+    window.location.replace("/");
+  });
+});
+</script>
+
+
+
+<%- include ("./../partials/footer") %>

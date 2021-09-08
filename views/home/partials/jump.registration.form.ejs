@@ -1,0 +1,140 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Add a new jump record</h4>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label class="label-control">Datetime Picker</label>
+          <input type="text" class="form-control datetimepicker" value="10/05/2016"/>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="aircraftInput">Aircraft</label>
+          <input type="text" class="form-control" id="aircraftInput" placeholder="Aircraft" autocomplete="off">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="dropzoneInput">Dropzone</label>
+          <input type="text" class="form-control" id="dropzoneInput" placeholder="Dropzone" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="canopyInput">Canopy</label>
+          <input type="text" class="form-control" id="canopyInput" placeholder="Canopy" autocomplete="off">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="altitudeInput">Altitude</label>
+          <select class="form-control selectpicker" data-style="btn btn-link" id="altitudeInput">
+            <option value="3000">3.000 ft.</option>
+            <option value="3250">3.250 ft.</option>
+            <option value="3500">3.500 ft.</option>
+            <option value="3750">3.750 ft.</option>
+            <option value="4000">4.000 ft.</option>
+          </select>
+          <small id="altitudeHelp" class="form-text text-muted">Altitude represented in feet. Measured from the point of aircraft exit.</small>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="freefalltimeInput">Freefall time</label>
+          <select class="form-control selectpicker" data-style="btn btn-link" id="freefalltimeInput">
+            <option value="0">0 sec.</option>
+            <option value="3">3 sec</option>
+            <option value="5">5 sec</option>
+            <option value="7">7 sec</option>
+            <option value="10">10 sec</option>
+            <option value="15">15 sec</option>
+            <option value="20">20 sec</option>
+            <option value="25">25 sec</option>
+            <option value="30">30 sec</option>
+            <option value="35">35 sec</option>
+            <option value="40">40 sec</option>
+            <option value="45">45 sec</option>
+            <option value="50">50 sec</option>
+            <option value="55">55 sec</option>
+            <option value="60">60 sec</option>
+          </select>
+          <small id="freefalltimeHelp" class="form-text text-muted">Freefall time represented in seconds.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="jumptypeInput">Jump Type</label>
+          <select class="form-control selectpicker" data-style="btn btn-link" id="jumptypeInput">
+            <option value="SL">Static Line</option>
+            <option value="DRP">Dummy Ripcord Pull</option>
+            <option value="AFF">Accelerated Freefall</option>
+            <option value="FS">Formation Skydiving</option>
+            <option value="WS">Wingsuiting</option>
+            <option value="FF">Freeflying</option>
+            <option value="CRP">Canopy Relative Work</option>
+            <option value="SW">Swooping</option>
+            <option value="DJ">Demo Jump</option>
+            <option value="TS">Tandem Skydiving</option>
+            <option value="SLS">Static Line Simulation</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="descriptionInput">Description</label>
+          <textarea class="form-control" id="descriptionInput" rows="3" autocomplete="off" maxlength="255"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="instructorInput">Instructor</label>
+          <input type="text" class="form-control" id="instructorInput" placeholder="Instructor" autocomplete="off">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="instructorlicenseInput">Instructor License</label>
+          <input type="text" class="form-control" id="instructorlicenseInput" placeholder="I.e. I2-234457" autocomplete="off">
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="remarkInput">Instructor remark</label>
+            <textarea class="form-control" id="remarkInput" rows="3" autocomplete="off" maxlength="255"></textarea>
+          </div>
+        </div>
+
+        <div class="offset-md-5 mt-5">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" id="approvedInput" type="checkbox" value="">
+                Approved jump
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+              </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="button" class="btn btn-primary" id="btn-add-jump-record">Add</button>
+      </div>
+</div>
