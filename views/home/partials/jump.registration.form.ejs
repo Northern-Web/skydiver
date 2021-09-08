@@ -1,3 +1,14 @@
+<div class="card" id="registration-confirmation" hidden>
+    <div class="card-header card-header-text card-header-success">
+      <div class="card-text">
+        <h4 class="card-title">Jump registered!</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      The jump has been successfully registered!
+    </div>
+</div>
+
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">Add a new jump record</h4>
@@ -6,7 +17,7 @@
       <div class="col">
         <div class="form-group">
           <label class="label-control">Datetime Picker</label>
-          <input type="text" class="form-control datetimepicker" value="10/05/2016"/>
+          <input type="text" class="form-control datetimepicker" id="jumpdateInput" value="<%= new Date() %>"/>
         </div>
       </div>
       <div class="col">
@@ -122,14 +133,12 @@
         </div>
 
         <div class="offset-md-5 mt-5">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" id="approvedInput" type="checkbox" value="">
-                Approved jump
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-              </label>
+          <div class="form-group">
+            <label for="jumptypeInput">Jump status</label>
+            <select class="form-control selectpicker" data-style="btn btn-link" id="approvedInput">
+              <option value="1">Approved</option>
+              <option value="0">Failed</option>
+            </select>
           </div>
         </div>
       </div>
@@ -137,4 +146,5 @@
       <div class="row">
         <button type="button" class="btn btn-primary" id="btn-add-jump-record">Add</button>
       </div>
+</div>
 </div>

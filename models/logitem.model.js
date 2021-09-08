@@ -53,7 +53,7 @@ LogItem.findById = (logItemId, result) => {
 };
 
 LogItem.getAll = (owner, result) => {
-  sql.query("SELECT * FROM logbook WHERE owner = ?", owner, (err, res) => {
+  sql.query("SELECT * FROM logbook WHERE owner = ? ORDER BY jumpnum DESC", owner, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -88,9 +88,21 @@ LogItem.updateById = (id, logitem, result) => {
   );
 };
 
-LogItem.countCurrentJumps = async (userId, result) => {
-  const count = await sql.query(`SELECT COUNT(*) AS jumpCount FROM logbook WHERE owner = ?`, userId);
-  return count.jumpCount;
-}
+LogItem.countCurrentJumps = (userId, result) => {
+  //var count = null;
+  sql.query(`SELECT COUNT(*) AS jumpCount FROM logbook WHERE owner = ?`,
+  [ userId ],
+  function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Jumps from model: " + res[0].jumpCount);
+    result(null, res[0].jumpCount);
+
+  });
+  //return count;
+};
 
 module.exports = LogItem;

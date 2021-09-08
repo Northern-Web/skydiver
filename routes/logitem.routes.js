@@ -4,7 +4,7 @@ module.exports = app => {
   const logitemController = require("../controllers/logitem.controller.js");
 
   // Create a new Log Item
-  //app.post("/api/logitems", logitemController.create);
+  app.post("/api/logitems", authorize, logitemController.create);
 
   // Retrieve all Log Item
   app.get("/api/logitems", authorize, logitemController.findAll);
