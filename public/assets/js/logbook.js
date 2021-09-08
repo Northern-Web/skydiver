@@ -27,6 +27,28 @@ async function GetLogbookItems () {
   }
 }
 
+async function AddLogbookItem () {
+  try {
+    fetch("/api/logitems", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      //body: JSON.stringify({email: email, password: password})
+    })
+    .then(response => response.json())
+    .then(data => {
+
+
+    });
+  } catch (e) {
+
+  } finally {
+
+  }
+}
+
 function ClearLogbookTable() {
   $("#logbook-table > tbody").empty();
 }
