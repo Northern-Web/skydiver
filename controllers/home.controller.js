@@ -8,9 +8,13 @@ exports.getIndexPage = (req, res) => {
 };
 
 exports.getDashboardPage = async (req, res) => {
+  Logbook.countCurrentJumps(req.userData.userid, (err, currentJumps) => {
+
   res.status(200).render("home/dashboard", {
     pageTitle: "Skydiving Logbook",
     path: "/dashboard",
-    username: req.userData.name
+    username: req.userData.name,
+    totalJumps: currentJumps
   });
+});
 }
