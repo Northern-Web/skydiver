@@ -2,21 +2,23 @@ const sql = require("./db.js");
 
 // Constructor
 const LogItem = function (logitem) {
-  this.jumpid       = logitem.jumpid;
-  this.jumpdate     = logitem.jumpdate;
-  this.jumpnum      = logitem.jumpnum;
-  this.aircraft     = logitem.aircraft;
-  this.dropzone     = logitem.dropzone;
-  this.canopy       = logitem.canopy;
-  this.altitude     = logitem.altitude;
-  this.freefalltime = logitem.freefalltime;
-  this.jumptype     = logitem.jumptype;
-  this.description  = logitem.description;
-  this.instructor   = logitem.instructor;
-  this.remark       = logitem.remark;
-  this.license      = logitem.license;
-  this.approved     = logitem.approved;
-  this.owner        = logitem.owner;
+  this.jumpid             = logitem.jumpid;
+  this.jumpdate           = logitem.jumpdate;
+  this.jumpnum            = logitem.jumpnum;
+  this.aircraft           = logitem.aircraft;
+  this.dropzone           = logitem.dropzone;
+  this.canopy             = logitem.canopy;
+  this.altitude           = logitem.altitude;
+  this.freefalltime       = logitem.freefalltime;
+  this.jumptype           = logitem.jumptype;
+  this.emergencyprocedure = logitem.emergencyprocedure;
+  this.twin               = logitem.twin;
+  this.description        = logitem.description;
+  this.instructor         = logitem.instructor;
+  this.remark             = logitem.remark;
+  this.license            = logitem.license;
+  this.approved           = logitem.approved;
+  this.owner              = logitem.owner;
 };
 
 LogItem.create = (newLogItem, result) => {
