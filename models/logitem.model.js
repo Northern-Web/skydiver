@@ -107,4 +107,19 @@ LogItem.countCurrentJumps = (userId, result) => {
   //return count;
 };
 
+LogItem.getTotalAltitude = (userId, result) => {
+  sql.query(`SELECT SUM(altitude) AS altitude FROM logbook WHERE owner = ?`,
+  [ userId ],
+  function (err, res) {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Total Altitude: " + res[0].altitude);
+    result(null, res[0].altitude);
+
+  });
+}
+
 module.exports = LogItem;

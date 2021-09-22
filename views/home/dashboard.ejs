@@ -56,7 +56,17 @@
         </div>
         </div>
         <div class="col">
-
+          <div class="card">
+        <div class="card-header card-header-icon card-header-rose">
+          <div class="card-icon">
+            <i class="material-icons">height</i>
+          </div>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Total altitude</h4>
+            <h3><%= totalAltitude.toLocaleString('en') %> ft.</h3>
+          </div>
+        </div>
         </div>
         <div class="col">
 
@@ -78,6 +88,7 @@
 
 </div>
 
+<%- include ("./partials/jump.details.modal.ejs") %>
 
 <script src="/assets/js/logbook.js"></script>
 
