@@ -42,7 +42,12 @@
         </div>
       </div>
       <div class="col">
+
         <div class="form-group">
+          <label for="altitudeInput">Altitude</label>
+          <input type="text" class="form-control" id="altitudeInput" placeholder="Altitude in ft." autocomplete="off">
+        </div>
+      <!---  <div class="form-group">
           <label for="altitudeInput">Altitude</label>
           <select class="form-control selectpicker" data-style="btn btn-link" id="altitudeInput">
             <option value="3000">3.000 ft.</option>
@@ -52,7 +57,7 @@
             <option value="4000">4.000 ft.</option>
           </select>
           <small id="altitudeHelp" class="form-text text-muted">Altitude represented in feet. Measured from the point of aircraft exit.</small>
-        </div>
+        </div>-->
       </div>
       <div class="col">
         <div class="form-group">
@@ -89,7 +94,8 @@
             <option value="AFF">Accelerated Freefall</option>
             <option value="FS">Formation Skydiving</option>
             <option value="WS">Wingsuiting</option>
-            <option value="FF">Freeflying</option>
+            <option value="FF">Freefall</option>
+            <option value="FRF">Freeflying</option>
             <option value="CRP">Canopy Relative Work</option>
             <option value="SW">Swooping</option>
             <option value="DJ">Demo Jump</option>
@@ -132,12 +138,32 @@
           </div>
         </div>
 
-        <div class="offset-md-5 mt-5">
+        <div class="offset-md-2 mt-5">
           <div class="form-group">
-            <label for="jumptypeInput">Jump status</label>
+            <label for="approvedInput">Jump status</label>
             <select class="form-control selectpicker" data-style="btn btn-link" id="approvedInput">
               <option value="1">Approved</option>
               <option value="0">Failed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-5 ml-3">
+          <div class="form-group">
+            <label for="emergencyprocedureInput">Emergency Procedure</label>
+            <select class="form-control selectpicker" data-style="btn btn-link" id="emergencyprocedureInput">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-5 ml-3">
+          <div class="form-group">
+            <label for="twinInput">Twin</label>
+            <select class="form-control selectpicker" data-style="btn btn-link" id="twinInput">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
             </select>
           </div>
         </div>
