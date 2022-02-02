@@ -13,21 +13,23 @@ exports.create = async (req, res) => {
 
     // Create a Logbook item
     const logItem = new LogItem({
-      jumpid: crypto.randomBytes(16).toString("hex"),
-      jumpdate:     new Date(req.body.jumpdate),
-      jumpnum:      currentJumps + 1,
-      aircraft:     req.body.aircraft,
-      dropzone:     req.body.dropzone,
-      canopy:       req.body.canopy,
-      altitude:     req.body.altitude,
-      freefalltime: req.body.freefalltime,
-      jumptype:     req.body.jumptype,
-      description:  req.body.description,
-      instructor:   req.body.instructor,
-      remark:       req.body.remark,
-      license:      req.body.license,
-      approved:     req.body.approved,
-      owner:        req.userData.userid
+      jumpid:             crypto.randomBytes(16).toString("hex"),
+      jumpdate:           new Date(req.body.jumpdate),
+      jumpnum:            currentJumps + 1,
+      aircraft:           req.body.aircraft,
+      dropzone:           req.body.dropzone,
+      canopy:             req.body.canopy,
+      altitude:           req.body.altitude,
+      freefalltime:       req.body.freefalltime,
+      jumptype:           req.body.jumptype,
+      emergencyprocedure: req.body.emergencyprocedure,
+      twin:               req.body.twin,
+      description:        req.body.description,
+      instructor:         req.body.instructor,
+      remark:             req.body.remark,
+      license:            req.body.license,
+      approved:           req.body.approved,
+      owner:              req.userData.userid
     });
 
     // Save LogItem in the database
@@ -42,7 +44,7 @@ exports.create = async (req, res) => {
   });
 }
 
-// Retrieve all Customers from the database.
+// Retrieve all Logitems from the database.
 exports.findAll = (req, res) => {
   const OWNER = req.userData.userid;
   console.log(OWNER);
