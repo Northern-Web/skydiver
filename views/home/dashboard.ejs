@@ -52,24 +52,39 @@
         <div class="card-body">
             <h4 class="card-title">Total jumps</h4>
             <h3><%= totalJumps %></h3>
+            <br>
+            <br>
+            <br>
           </div>
         </div>
         </div>
         <div class="col">
           <div class="card">
-        <div class="card-header card-header-icon card-header-rose">
+        <div class="card-header card-header-icon card-header-warning">
           <div class="card-icon">
             <i class="material-icons">height</i>
           </div>
         </div>
         <div class="card-body">
             <h4 class="card-title">Total altitude</h4>
-            <h3><%= totalAltitude.toLocaleString('en') %> ft.</h3>
+            <h3><%= (totalAltitude ?  totalAltitude.toLocaleString('en') : "0") %> <small>ft.</small></h3>
+            <h4>Average</h4>
+            <h4><%= (totalAltitude ? (totalAltitude / totalJumps).toLocaleString("en") : "0") %> <small>ft.</small></h4>
           </div>
         </div>
         </div>
         <div class="col">
-
+          <div class="card">
+        <div class="card-header card-header-icon card-header-info">
+          <div class="card-icon">
+            <i class="material-icons">accessibility_new</i>
+          </div>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Total freefall time</h4>
+            <h3><%= (totalFreefalltime ? totalFreefalltime.toLocaleString('en') : "0") %> <small>seconds</small></h3>
+          </div>
+        </div>
         </div>
         <div class="col">
 
