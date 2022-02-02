@@ -122,4 +122,19 @@ LogItem.getTotalAltitude = (userId, result) => {
   });
 }
 
+  LogItem.getTotalFreefalltime = (userId, result) => {
+    sql.query(`SELECT SUM(freefalltime) AS freefalltime FROM logbook WHERE owner = ?`,
+    [ userId ],
+    function (err, res) {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("Total freefall time: " + res[0].freefalltime);
+      result(null, res[0].freefalltime);
+
+    });
+  }
+
 module.exports = LogItem;
