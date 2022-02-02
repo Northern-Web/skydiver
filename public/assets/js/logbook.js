@@ -10,7 +10,7 @@ async function GetLogbookItems () {
         $("#logbook-table").find("tbody").append(`
           <tr>
           <td hidden>${item.jumpid}</td>
-          <td>${item.jumpnum}</td>
+          <td><strong><a href="#" onclick="GetLogItemDetails(this)">${item.jumpnum}</a></strong></td>
           <td>${date.getDate()}.${date.getMonth()}.${date.getFullYear()}</td>
           <td>${item.aircraft}</td>
           <td>${item.dropzone}</td>
@@ -36,23 +36,26 @@ async function AddLogbookItem () {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        jumpdate:     $("#jumpdateInput").val(),
-        aircraft:     $("#aircraftInput").val(),
-        dropzone:     $("#dropzoneInput").val(),
-        canopy:       $("#canopyInput").val(),
-        altitude:     $("#altitudeInput").val(),
-        freefalltime: $("#freefalltimeInput").val(),
-        jumptype:     $("#jumptypeInput").val(),
-        description:  $("#descriptionInput").val(),
-        instructor:   $("#instructorInput").val(),
-        remark:       $("#remarkInput").val(),
-        license:      $("#instructorlicenseInput").val(),
-        approved:     $("#approvedInput").val()
+        jumpdate:           $("#jumpdateInput").val(),
+        aircraft:           $("#aircraftInput").val(),
+        dropzone:           $("#dropzoneInput").val(),
+        canopy:             $("#canopyInput").val(),
+        altitude:           $("#altitudeInput").val(),
+        freefalltime:       $("#freefalltimeInput").val(),
+        jumptype:           $("#jumptypeInput").val(),
+        emergencyprocedure: $("#emergencyprocedureInput").val(),
+        twin:               $("#twinInput").val(),
+        description:        $("#descriptionInput").val(),
+        instructor:         $("#instructorInput").val(),
+        remark:             $("#remarkInput").val(),
+        license:            $("#instructorlicenseInput").val(),
+        approved:           $("#approvedInput").val()
       })
     })
     .then(response => response.json())
     .then(data => {
       console.log("Jump record added to database!");
+      ClearJumpRegistration();
 
     });
   } catch (e) {
@@ -65,18 +68,20 @@ function ClearLogbookTable() {
 }
 
 async function ClearJumpRegistration () {
-  $("#jumpdateInput").val(),
-  $("#aircraftInput").val(""),
-  $("#dropzoneInput").val(""),
-  $("#canopyInput").val(""),
-  $("#altitudeInput").val(3000),
-  $("#freefalltimeInput").val(0),
-  $("#jumptypeInput").val("SL"),
-  $("#descriptionInput").val(""),
-  $("#instructorInput").val(""),
-  $("#remarkInput").val(""),
-  $("#instructorlicenseInput").val(""),
-  $("#approvedInput").val(0)
+  $("#jumpdateInput").val();
+  $("#aircraftInput").val("");
+  $("#dropzoneInput").val("");
+  $("#canopyInput").val("");
+  $("#altitudeInput").val("");
+  $("#freefalltimeInput").val(0);
+  $("#jumptypeInput").val("SL");
+  $("#emergencyprocedureInput").val(0);
+  $("#twinInput").val(0);
+  $("#descriptionInput").val("");
+  $("#instructorInput").val("");
+  $("#remarkInput").val("");
+  $("#instructorlicenseInput").val("");
+  $("#approvedInput").val(0);
 }
 
 async function ShowRegistrationConfirmation (ms) {
@@ -92,6 +97,11 @@ async function ShowRegistrationConfirmation (ms) {
 
   confirmation.style.display = "none";
 
+}
+
+async function GetLogItemDetails(linkButton) {
+  const jumpId = linkButton.parentNode.parentNode.cells[0].textContent;
+  alert(jumpId);
 }
 
 $("#btn-add-jump-record").click(function () {
