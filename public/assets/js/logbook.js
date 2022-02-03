@@ -10,7 +10,7 @@ async function GetLogbookItems () {
         $("#logbook-table").find("tbody").append(`
           <tr>
           <td hidden>${item.jumpid}</td>
-          <td><strong><a href="#" onclick="GetLogItemDetails(this)">${item.jumpnum}</a></strong></td>
+          <td>${item.jumpnum}</td>
           <td>${date.getDate()}.${date.getMonth()}.${date.getFullYear()}</td>
           <td>${item.aircraft}</td>
           <td>${item.dropzone}</td>
@@ -18,6 +18,7 @@ async function GetLogbookItems () {
           <td>${item.altitude}</td>
           <td>${item.jumptype}</td>
           <td class="${(item.approved) ? "text-success": "text-danger" }">${(item.approved) ? "<i class=\"material-icons\">done</i>" : "<i class=\"material-icons\">error</i>"}</td>
+          <td><button type="button" class="btn btn-sm btn-info" onclick="GetLogItemDetails('${item.jumpid}')"><i class="material-icons">search</i></button></td>
           </tr>
           `);
       }
@@ -99,10 +100,13 @@ async function ShowRegistrationConfirmation (ms) {
 
 }
 
-async function GetLogItemDetails(linkButton) {
-  const jumpId = linkButton.parentNode.parentNode.cells[0].textContent;
-  alert(jumpId);
-}
+async function GetLogItemDetails(id){
+  //const jumpId = this.parentNode.parentNode.cells[0].textContent;
+  console.log("Clicked!");
+  console.log(id);
+  //console.log(jumpId);
+  //alert(jumpId);
+};
 
 $("#btn-add-jump-record").click(function () {
   AddLogbookItem();
