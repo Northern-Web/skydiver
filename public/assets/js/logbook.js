@@ -10,11 +10,7 @@ async function GetLogbookItems () {
         $("#logbook-table").find("tbody").append(`
           <tr>
           <td hidden>${item.jumpid}</td>
-<<<<<<< HEAD
-          <td>${item.jumpnum}</td>
-=======
           <td><strong><a href="#" onclick="GetLogItemDetails('${item.jumpid}')" data-bs-toggle="modal" data-bs-target="#jumpDetails-modal">${item.jumpnum}</a></strong></td>
->>>>>>> 0bd1d2302d8d785d699992e9a994958d312b1c5b
           <td>${date.getDate()}.${date.getMonth()}.${date.getFullYear()}</td>
           <td>${item.aircraft}</td>
           <td>${item.dropzone}</td>
@@ -22,7 +18,6 @@ async function GetLogbookItems () {
           <td>${item.altitude}</td>
           <td>${item.jumptype}</td>
           <td class="${(item.approved) ? "text-success": "text-danger" }">${(item.approved) ? "<i class=\"material-icons\">done</i>" : "<i class=\"material-icons\">error</i>"}</td>
-          <td><button type="button" class="btn btn-sm btn-info" onclick="GetLogItemDetails('${item.jumpid}')"><i class="material-icons">search</i></button></td>
           </tr>
           `);
       }
@@ -104,15 +99,6 @@ async function ShowRegistrationConfirmation (ms) {
 
 }
 
-<<<<<<< HEAD
-async function GetLogItemDetails(id){
-  //const jumpId = this.parentNode.parentNode.cells[0].textContent;
-  console.log("Clicked!");
-  console.log(id);
-  //console.log(jumpId);
-  //alert(jumpId);
-};
-=======
 async function GetLogItemDetails(jumpId) {
   try {
     fetch(`/api/logitems/${jumpId}`)
@@ -161,7 +147,6 @@ async function GetLogItemDetails(jumpId) {
 async function CloseLogItemDetails(){
   $("#jumpDetails-modal").modal('toggle');
 }
->>>>>>> 0bd1d2302d8d785d699992e9a994958d312b1c5b
 
 $("#btn-add-jump-record").click(function () {
   AddLogbookItem();
