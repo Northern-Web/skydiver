@@ -11,7 +11,7 @@ async function GetLogbookItems () {
           <tr>
           <td hidden>${item.jumpid}</td>
           <td><strong><a href="#" onclick="GetLogItemDetails('${item.jumpid}')" data-bs-toggle="modal" data-bs-target="#jumpDetails-modal">${item.jumpnum}</a></strong></td>
-          <td>${date.getDate()}.${date.getMonth()}.${date.getFullYear()}</td>
+          <td>${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}</td>
           <td>${item.aircraft}</td>
           <td>${item.dropzone}</td>
           <td>${item.canopy}</td>
