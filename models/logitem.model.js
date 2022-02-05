@@ -36,7 +36,7 @@ LogItem.create = (newLogItem, result) => {
 
 
 LogItem.findById = (logItemId, result) => {
-  sql.query(`SELECT * FROM logbook WHERE jumpid = ${logItemId}`, (err, res) => {
+  sql.query(`SELECT * FROM logbook WHERE jumpid = "${logItemId}"`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

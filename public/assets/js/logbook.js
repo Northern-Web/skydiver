@@ -10,7 +10,11 @@ async function GetLogbookItems () {
         $("#logbook-table").find("tbody").append(`
           <tr>
           <td hidden>${item.jumpid}</td>
+<<<<<<< HEAD
           <td>${item.jumpnum}</td>
+=======
+          <td><strong><a href="#" onclick="GetLogItemDetails('${item.jumpid}')" data-bs-toggle="modal" data-bs-target="#jumpDetails-modal">${item.jumpnum}</a></strong></td>
+>>>>>>> 0bd1d2302d8d785d699992e9a994958d312b1c5b
           <td>${date.getDate()}.${date.getMonth()}.${date.getFullYear()}</td>
           <td>${item.aircraft}</td>
           <td>${item.dropzone}</td>
@@ -100,6 +104,7 @@ async function ShowRegistrationConfirmation (ms) {
 
 }
 
+<<<<<<< HEAD
 async function GetLogItemDetails(id){
   //const jumpId = this.parentNode.parentNode.cells[0].textContent;
   console.log("Clicked!");
@@ -107,6 +112,56 @@ async function GetLogItemDetails(id){
   //console.log(jumpId);
   //alert(jumpId);
 };
+=======
+async function GetLogItemDetails(jumpId) {
+  try {
+    fetch(`/api/logitems/${jumpId}`)
+    .then(response => response.json())
+    .then(data => {
+      const date = new Date(data.jumpdate);
+      $("#jumpDetails-title").text("Jump #" + data.jumpnum);
+      $("#jumpDetails-jumptype").text(data.jumptype);
+      $("#jumpDetails-date").text(date.getDate() + "." + date.getMonth() + "." + date.getFullYear());
+      $("#jumpDetails-dropzone").text(data.dropzone);
+      $("#jumpDetails-canopy").text(data.canopy);
+      $("#jumpDetails-altitude").text(data.altitude.toLocaleString('en') + " ft.");
+
+      if (data.emergencyprocedure) {
+        $("#jumpDetails-emergencyProcedure").html('<h6>Emergency Procedure:</h6><i class="material-icons text-danger">warning</i>')
+      } else {
+        $("#jumpDetails-emergencyProcedure").empty();
+      }
+
+      if (data.twin) {
+        $("#jumpDetails-twin").html('<h6>Twin:</h6><i class="material-icons text-warning">warning</i>')
+      } else {
+        $("#jumpDetails-twin").empty();
+      }
+
+      $("#jumpDetails-aircraft").text(data.aircraft);
+      $("#jumpDetails-freefallTime").text(data.freefalltime + " seconds");
+
+      if(data.instructor){
+        $("#jumpDetails-instructor").html(`<h6>Instructor:</h6><p>${data.instructor}</p><span class="badge badge-primary">${data.license}</span>`);
+      } else {
+          $("#jumpDetails-instructor").empty();
+      }
+
+      $("#jumpDetails-remark").text(data.remark);
+      $("#jumpDetails-selfRemark").text(data.description);
+      $("#jumpDetails-jumpId").text("Unique Jump ID: " + data.jumpid);
+
+      $("#jumpDetails-modal").show();
+      });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+async function CloseLogItemDetails(){
+  $("#jumpDetails-modal").modal('toggle');
+}
+>>>>>>> 0bd1d2302d8d785d699992e9a994958d312b1c5b
 
 $("#btn-add-jump-record").click(function () {
   AddLogbookItem();
