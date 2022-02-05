@@ -15,6 +15,8 @@ app.use(cookieParser());
 require("./routes/home.routes.js")(app);
 require("./routes/logitem.routes.js")(app);
 require("./routes/user.routes.js")(app);
+require("./routes/country.routes.js")(app);
+require("./routes/dropzone.routes.js")(app);
 
 app.set('view engine', 'ejs');
 
