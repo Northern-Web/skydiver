@@ -86,8 +86,21 @@
           </div>
         </div>
         </div>
-        <div class="col">
 
+        <div class="col">
+          <div class="card">
+        <div class="card-header card-header-icon card-header-primary">
+          <div class="card-icon">
+            <i class="material-icons">ruler_vertical</i>
+          </div>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Total distance dropped</h4>
+            <% for (let distance of distances) { %>
+              <h3><%= distance.name %>: <%= (totalAltitude / distance.distance) %> <small>times</small></h3>
+            <% } %>
+          </div>
+        </div>
         </div>
       </div>
     </div>
