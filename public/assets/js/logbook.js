@@ -38,6 +38,7 @@ async function AddLogbookItem () {
       body: JSON.stringify({
         jumpdate:           $("#jumpdateInput").val(),
         aircraft:           $("#aircraftInput").val(),
+        country_code:       $("#countryInput").val(),
         dropzone:           $("#dropzoneInput").val(),
         canopy:             $("#canopyInput").val(),
         altitude:           $("#altitudeInput").val(),
