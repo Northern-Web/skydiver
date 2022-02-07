@@ -86,8 +86,32 @@
           </div>
         </div>
         </div>
-        <div class="col">
 
+        <div class="col">
+          <div class="card">
+        <div class="card-header card-header-icon card-header-primary">
+          <div class="card-icon">
+            <i class="material-icons">ruler</i>
+          </div>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Total distance dropped</h4>
+            <% for (let distance of distances) { %>
+              <h3><%= distance.name %></h3>
+
+              <div class="progress-wrapper">
+                <div class="progress-info">
+                  <div class="progress-percentage">
+                    <span class="text-sm font-weight-bold"><%= (totalAltitude / distance.distance * 100).toLocaleString('en') %>%</span>
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="<%= (totalAltitude / distance.distance) * 100 %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= (totalAltitude / distance.distance) * 100 %>%;"></div>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -106,6 +130,9 @@
 <%- include ("./partials/jump.details.modal.ejs") %>
 
 <script src="/assets/js/logbook.js"></script>
+<script src="/assets/js/api/countries.js"></script>
+<script src="/assets/js/api/dropzones.js"></script>
+
 
 <script>
   <!-- javascript for init -->

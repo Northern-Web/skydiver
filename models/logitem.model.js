@@ -6,6 +6,7 @@ const LogItem = function (logitem) {
   this.jumpdate           = logitem.jumpdate;
   this.jumpnum            = logitem.jumpnum;
   this.aircraft           = logitem.aircraft;
+  this.country_code       = logitem.country_code;
   this.dropzone           = logitem.dropzone;
   this.canopy             = logitem.canopy;
   this.altitude           = logitem.altitude;

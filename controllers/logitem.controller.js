@@ -17,6 +17,7 @@ exports.create = async (req, res) => {
       jumpdate:           new Date(req.body.jumpdate),
       jumpnum:            currentJumps + 1,
       aircraft:           req.body.aircraft,
+      country_code:       req.body.country_code,
       dropzone:           req.body.dropzone,
       canopy:             req.body.canopy,
       altitude:           req.body.altitude,
