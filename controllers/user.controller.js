@@ -41,11 +41,13 @@ exports.login = (req, res) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: "E-mail or password is incorrect!"
+          message: "E-mail or password is incorrect!",
+          status: 500
         });
       } else {
         res.status(500).send({
-          message: "An error occured during authentication."
+          message: "An error occured during authentication.",
+          status: 500
         });
       }
 
@@ -58,7 +60,8 @@ exports.login = (req, res) => {
           if (bErr) {
             throw bErr;
             return res.status(401).send({
-              msg: 'Username or password is incorrect!'
+              msg: 'Username or password is incorrect!',
+              status: 401
             });
           }
 
@@ -80,19 +83,22 @@ exports.login = (req, res) => {
                   secure: process.env.NODE_ENV === "production"
               }).status(200).send({
                 msg: "Authorization Successful",
+                status: 200,
                 redirect: "/dashboard"
               });
             });
           } else {
             return res.status(401).send({
-              msg: 'Username or password is incorrect!'
+              msg: 'Username or password is incorrect!',
+              status: 401
             });
           }
 
         });
       } else {
         return res.status(401).send({
-          msg: 'Username or password is incorrect!'
+          msg: 'Username or password is incorrect!',
+          status: 401
         });
       }
 

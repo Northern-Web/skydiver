@@ -4,9 +4,19 @@ const mysql        = require("mysql");
 const config       = require('./config/config.js');
 const bodyParser   = require("body-parser");
 const cookieParser = require("cookie-parser");
+const cors=require("cors");
+
+
+const corsOptions ={
+   origin:'*',
+   credentials:true,
+   optionSuccessStatus:200,
+}
 
 
 
+
+app.use(cors(corsOptions))
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(cookieParser());
