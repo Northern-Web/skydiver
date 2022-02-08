@@ -6,6 +6,7 @@ const User = function (user) {
   this.name         = user.name;
   this.email        = user.email;
   this.password     = user.password;
+  this.country      = user.country;
   this.isactive     = user.isactive;
   this.created      = user.created;
   this.lastlogin    = user.lastlogin;
