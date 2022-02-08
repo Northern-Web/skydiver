@@ -21,6 +21,7 @@ exports.create = async (req, res) => {
     name:     req.body.name,
     email:    req.body.email,
     password: await bcrypt.hash(req.body.password, SALT_ROUNDS),
+    country:  req.body.country,
     isactive: IS_ACTIVE,
     created:  new Date()
   });
@@ -84,7 +85,7 @@ exports.login = (req, res) => {
               }).status(200).send({
                 msg: "Authorization Successful",
                 status: 200,
-                redirect: "/dashboard"
+                token: token
               });
             });
           } else {
