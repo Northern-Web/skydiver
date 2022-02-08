@@ -4,6 +4,6 @@ module.exports = app => {
   const countryController = require("../controllers/country.controller.js");
 
   // Retrieve all Log Item
-  app.get("/api/countries", authorize, countryController.findAll);
+  app.get("/api/countries", countryController.findAll);
 
 };
