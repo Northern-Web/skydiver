@@ -47,7 +47,7 @@ exports.create = async (req, res) => {
 
 // Retrieve all Logitems from the database.
 exports.findAll = (req, res) => {
-  const OWNER = req.userData.userid;
+  const OWNER = req.params.userid;
   console.log(OWNER);
   LogItem.getAll(OWNER, (err, data) => {
   if (err)
@@ -75,3 +75,7 @@ exports.findOne = (req, res) => {
     } else res.send(data);
   });
 };
+
+/*exports.getDashboardStatistics = (req, res) => {
+  const OWNER = req.userData.userid;
+};*/

@@ -7,10 +7,10 @@ module.exports = app => {
   app.post("/api/logitems", authorize, logitemController.create);
 
   // Retrieve all Log Item
-  app.get("/api/logitems", authorize, logitemController.findAll);
+  app.get("/api/logitems/:userid", logitemController.findAll);
 
   // Retrieve a single Log Item with logitemId
-  app.get("/api/logitems/:logitemId", authorize, logitemController.findOne);
+  app.get("/api/logitem/:logitemId", authorize, logitemController.findOne);
 
   // Update a Log Item with logitemId
   //app.put("/api/logitems/:logitemId", logitemController.update);
