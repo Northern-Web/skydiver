@@ -43,7 +43,6 @@ exports.create = async (req, res) => {
 // Retrieve all Logitems from the database.
 exports.findAll = (req, res) => {
   const OWNER = req.params.userid;
-  console.log(OWNER);
   LogItem.getAll(OWNER, (err, data) => {
   if (err)
     res.status(500).send({
@@ -70,6 +69,19 @@ exports.findOne = (req, res) => {
     } else res.send(data);
   });
 };
+
+exports.findAnonymousLogItems = (req, res) => {
+  LogItem.getAnonymousLogItems((err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: 'Error retreiving log items.'
+      })
+    }
+    else {
+      res.send(data);
+    }
+  })
+}
 
 /*exports.getDashboardStatistics = (req, res) => {
   const OWNER = req.userData.userid;

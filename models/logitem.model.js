@@ -123,7 +123,7 @@ LogItem.getTotalAltitude = (userId, result) => {
   });
 }
 
-  LogItem.getTotalFreefalltime = (userId, result) => {
+LogItem.getTotalFreefalltime = (userId, result) => {
     sql.query(`SELECT SUM(freefalltime) AS freefalltime FROM logbook WHERE owner = ?`,
     [ userId ],
     function (err, res) {
@@ -135,7 +135,19 @@ LogItem.getTotalAltitude = (userId, result) => {
       console.log("Total freefall time: " + res[0].freefalltime);
       result(null, res[0].freefalltime);
 
-    });
-  }
+  });
+}
+
+LogItem.getAnonymousLogItems = (result) => {
+  sql.query('SELECT aircraft, country_code, dropzone, altitude, freefalltime, jumptype, emergencyprocedure, twin FROM logbook',
+  function (err, res) {
+    if (err) {
+      console.log('error: ' + err);
+      result(null, err);
+      return;
+    }
+    result(null, res);
+  })
+}
 
 module.exports = LogItem;

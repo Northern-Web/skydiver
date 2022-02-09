@@ -8,9 +8,12 @@ module.exports = app => {
 
   // Retrieve all Log Item
   app.get("/api/logitems/:userid", logitemController.findAll);
+  app.get("/api/logitems/anonymous", logitemController.findAnonymousLogItems);
 
   // Retrieve a single Log Item with logitemId
   app.get("/api/logitem/:logitemId", logitemController.findOne);
+
+
 
   // Update a Log Item with logitemId
   //app.put("/api/logitems/:logitemId", logitemController.update);
