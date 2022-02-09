@@ -4,7 +4,7 @@ const User = require("../models/user.model.js");
 
 module.exports = (req, res, next) => {
   try {
-    const token = req.cookies.access_token;
+    const token = req.header('Authorization');
     const decoded = jwt.verify(
     token,
     global.gConfig.web_token_secret

@@ -4,6 +4,6 @@ module.exports = app => {
   const dropzoneController = require("../controllers/dropzone.controller.js");
 
   // Retrieve all dropzones
-  app.get("/api/dropzones/:countryCode", authorize, dropzoneController.findByCode);
+  app.get("/api/dropzones/:countryCode", dropzoneController.findByCode);
 
 };

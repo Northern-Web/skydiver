@@ -1,14 +1,9 @@
+const jwt = require('jsonwebtoken');
+const { secret } = require('../config/config.json');
 const LogItem = require("../models/logitem.model.js");
 const crypto  = require("crypto");
 
 exports.create = async (req, res) => {
-  // Validate request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-  }
-
   LogItem.countCurrentJumps(req.userData.userid, (err, currentJumps) => {
 
     // Create a Logbook item
