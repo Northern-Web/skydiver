@@ -7,8 +7,8 @@ module.exports = app => {
   app.post("/api/logitems", authorize, logitemController.create);
 
   // Retrieve all Log Item
-  app.get("/api/logitems/:userid", logitemController.findAll);
   app.get("/api/logitems/anonymous", logitemController.findAnonymousLogItems);
+  app.get("/api/logitems/:userid", logitemController.findAll);
 
   // Retrieve a single Log Item with logitemId
   app.get("/api/logitem/:logitemId", logitemController.findOne);

@@ -53,6 +53,18 @@ exports.findAll = (req, res) => {
 });
 };
 
+exports.findAnonymousLogItems = (req, res) => {
+  LogItem.getAnonymousLogItems((err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: 'Error retreiving log items.'
+      });
+    } else {
+      res.send(data);
+    }
+  });
+}
+
 // Find a single Log Item with a logItemId
 exports.findOne = (req, res) => {
   LogItem.findById(req.params.logitemId, (err, data) => {
@@ -70,18 +82,7 @@ exports.findOne = (req, res) => {
   });
 };
 
-exports.findAnonymousLogItems = (req, res) => {
-  LogItem.getAnonymousLogItems((err, data) => {
-    if (err) {
-      res.status(500).send({
-        message: 'Error retreiving log items.'
-      })
-    }
-    else {
-      res.send(data);
-    }
-  })
-}
+
 
 /*exports.getDashboardStatistics = (req, res) => {
   const OWNER = req.userData.userid;

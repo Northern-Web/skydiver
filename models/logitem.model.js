@@ -68,6 +68,20 @@ LogItem.getAll = (owner, result) => {
   });
 };
 
+LogItem.getAnonymousLogItems = (result) => {
+  sql.query("SELECT aircraft, country_code, dropzone, altitude, freefalltime, jumptype, emergencyprocedure, twin FROM logbook", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    
+    console.log("log items: ", res)
+    result(null, res);
+  });
+};
+
+
 LogItem.updateById = (id, logitem, result) => {
   sql.query(
     "UPDATE logbook SET jumpdate = ?, aircraft = ?, active = ? WHERE id = ?",
@@ -136,18 +150,6 @@ LogItem.getTotalFreefalltime = (userId, result) => {
       result(null, res[0].freefalltime);
 
   });
-}
-
-LogItem.getAnonymousLogItems = (result) => {
-  sql.query('SELECT aircraft, country_code, dropzone, altitude, freefalltime, jumptype, emergencyprocedure, twin FROM logbook',
-  function (err, res) {
-    if (err) {
-      console.log('error: ' + err);
-      result(null, err);
-      return;
-    }
-    result(null, res);
-  })
 }
 
 module.exports = LogItem;
