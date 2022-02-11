@@ -9,6 +9,7 @@ const Dropzone = function (dropzone) {
   this.latitude     = dropzone.latitude;
   this.longitude    = dropzone.longitude;
   this.address      = dropzone.address;
+  this.city         = dropzone.city;
   this.zipcode      = dropzone.zipcode;
   this.website      = dropzone.website;
   this.phone        = dropzone.phone;
