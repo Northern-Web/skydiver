@@ -42,4 +42,17 @@ Dropzone.findByCode = (countryCode, result) => {
   });
 };
 
+Dropzone.findById = (id, result) => {
+  sql.query(`SELECT * FROM dropzones WHERE dzid = ${id}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("dropzone: ", res);
+    result(null, res);
+  })
+}
+
 module.exports = Dropzone;

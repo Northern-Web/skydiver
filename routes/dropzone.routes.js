@@ -5,5 +5,6 @@ module.exports = app => {
 
   // Retrieve all dropzones
   app.get("/api/dropzones/:countryCode", dropzoneController.findByCode);
+  app.get("/api/dropzone/:id", dropzoneController.findById);
 
 };
