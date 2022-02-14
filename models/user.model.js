@@ -2,14 +2,15 @@ const sql = require("./db.js");
 
 // Constructor
 const User = function (user) {
-  this.userid       = user.userid;
-  this.name         = user.name;
-  this.email        = user.email;
-  this.password     = user.password;
-  this.country      = user.country;
-  this.isactive     = user.isactive;
-  this.created      = user.created;
-  this.lastlogin    = user.lastlogin;
+  this.userid        = user.userid;
+  this.name          = user.name;
+  this.email         = user.email;
+  this.password      = user.password;
+  this.country       = user.country;
+  this.isactive      = user.isactive;
+  this.created       = user.created;
+  this.logbookShared = user.logbookShared;
+  this.lastlogin     = user.lastlogin;
 };
 
 User.create = async (newUser, result) => {
