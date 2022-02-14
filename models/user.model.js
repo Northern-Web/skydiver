@@ -33,7 +33,7 @@ User.create = async (newUser, result) => {
 }
 
 User.findById = (userId, result) => {
-  sql.query("SELECT * FROM users WHERE id = ?", userId, (err, res) => {
+  sql.query("SELECT * FROM users WHERE userid = ?", userId, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -72,8 +72,8 @@ User.findByEmail = (userEmail, result) => {
 
 User.updateById = (id, user, result) => {
   sql.query(
-    "UPDATE users SET name = ?, email = ?, password = ?, isactive = ?, created = ?, lastlogin = ? WHERE userid = ?",
-    [user.name, user.email, user.password, user.isactive, user.created, user.lastlogin, id],
+    "UPDATE users SET name = ?, email = ?, password = ?, country = ?, isactive = ?, logbookShared = ?, created = ?, lastlogin = ? WHERE userid = ?",
+    [user.name, user.email, user.password, user.country, user.isactive, user.logbookShared, user.created, user.lastlogin, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

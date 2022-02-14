@@ -15,6 +15,8 @@ module.exports = app => {
   // Retrieve a single User with userid
   app.get("/api/users/:userid", authorize, userController.findOne);
 
+  app.patch("/api/users", authorize, userController.update);
+
   // Update a User with userid
   //app.put("/api/users/:userid", userController.update);
 

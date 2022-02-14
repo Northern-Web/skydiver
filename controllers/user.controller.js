@@ -23,7 +23,8 @@ exports.create = async (req, res) => {
     password: await bcrypt.hash(req.body.password, SALT_ROUNDS),
     country:  req.body.country,
     isactive: IS_ACTIVE,
-    created:  new Date()
+    created:  new Date(),
+    logbookShared: 0
   });
 
   // Save User in the database
@@ -131,3 +132,32 @@ exports.findOne = (req, res) => {
     } else res.send(data);
   });
 };
+
+exports.update = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+
+  const user = new User ({
+    userid:         req.body.userid,
+    name:           req.body.name,
+    email:          req.body.email,
+    password:       req.body.password,
+    country:        req.body.country,
+    isactive:       req.body.isactive,
+    created:        req.body.created,
+    logbookShared:  req.body.logbookShared,
+    lastlogin:      req.body.lastlogin
+  });
+
+  User.updateById(req.body.userid, user, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Customer."
+      });
+    else res.send(data);
+  });
+}
